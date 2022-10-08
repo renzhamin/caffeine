@@ -1,8 +1,8 @@
 {
     "version": "1.0",
     "manifest_version": 2,
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "short_name": "Caffeine",
+    "name": "Caffeine",
     "start_url": "./index.html",
     "display": "standalone",
     "theme_color": "#000000",

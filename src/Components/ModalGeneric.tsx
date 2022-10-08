@@ -7,7 +7,7 @@ export function ModalGeneric({
 }: {
     isActive: boolean
     setIsActive(arg0: boolean): void
-    children: any
+    children?: any
 }) {
     return (
         <div className={"modal " + (isActive && "is-active")}>
