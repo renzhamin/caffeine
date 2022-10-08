@@ -2,7 +2,13 @@ import PocketBase from "pocketbase"
 import { OrderItem } from "../types"
 import { calculateCost } from "./CostCalculations"
 
-const client = new PocketBase("http://127.0.0.1:8080")
+let url = "https://caffeine.fly.dev"
+
+if (process.env.NODE_ENV === "development") {
+    url = "http://localhost:8080"
+}
+
+const client = new PocketBase(url)
 
 export async function createOrder(
     name: string,
@@ -17,6 +23,8 @@ export async function createOrder(
         room: room + (isSouthHall ? "S" : "N"),
         cost: calculateCost(oi.item.price, oi.ing),
     }
-    const record = await client.records.create("orders", order)
+    const record = await client.records.create("orders", order).catch((err) => {
+        throw Error(err)
+    })
     console.log(record)
 }

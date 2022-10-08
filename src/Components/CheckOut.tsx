@@ -88,7 +88,7 @@ function ConfirmOrder({
                 text={"Are you sure ? "}
             />
 
-            <form onChange={(e) => e.preventDefault()}>
+            <form id="checkout-form">
                 <div className="card-content">
                     <div className="mb-3">
                         <span>Room No : </span>
@@ -109,7 +109,7 @@ function ConfirmOrder({
                         <input
                             required={true}
                             type="text"
-                            id="room"
+                            id="room-input"
                             value={yourName}
                             onChange={(e) => {
                                 setYourName(e.currentTarget.value)
@@ -156,7 +156,12 @@ function ConfirmOrder({
                             disabled={cost === 0}
                             onClick={(e) => {
                                 e.preventDefault()
-                                if (room == "" || yourName == "") return
+                                if (room == "" || yourName == "") {
+                                    const x: HTMLFormElement | null =
+                                        document.querySelector("#checkout-form")
+                                    x?.reportValidity()
+                                    return
+                                }
                                 setIsConfirmOrderModalActive(true)
                             }}
                         >
@@ -165,7 +170,10 @@ function ConfirmOrder({
                         {cost > 0 && (
                             <button
                                 className="button is-danger is-pulled-right mt-3"
-                                onClick={() => setIsClearItemModalActive(true)}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setIsClearItemModalActive(true)
+                                }}
                             >
                                 Remove All
                             </button>

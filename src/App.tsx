@@ -1,14 +1,14 @@
 import React, { useState } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 
-import tea_raw from "./Images/tea-raw.jpg"
-import coffee from "./Images/coffee.jpg"
-import { Item } from "./Components/Item"
-import { NavBar } from "./Components/NavBar"
-import { OrderItem, ItemProps } from "./types"
 import { CheckOut } from "./Components/CheckOut"
 import { Home } from "./Components/Home"
+import { Item } from "./Components/Item"
+import { NavBar } from "./Components/NavBar"
 import { getOrderedItemsFromLS } from "./Helpers/LocalStorageMaintainer"
+import coffee from "./Images/coffee.jpg"
+import tea_raw from "./Images/tea-raw.jpg"
+import { ItemProps, OrderItem } from "./types"
 
 interface ContextState {
     totalOrderedItems: OrderItem[]
@@ -44,14 +44,14 @@ function App() {
             value={{ totalOrderedItems, setTotalOrderedItems, totalItems }}
         >
             <div>
-                <BrowserRouter>
+                <HashRouter>
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/item/:id" element={<Item />} />
                         <Route path="/checkout" element={<CheckOut />} />
                     </Routes>
-                </BrowserRouter>
+                </HashRouter>
             </div>
         </AppContext.Provider>
     )
