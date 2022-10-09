@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { toast } from "react-toastify"
 import { AppContext } from "../App"
 import { calculateCost, getTotalCost } from "../Helpers/CostCalculations"
 import { createOrder } from "../Helpers/CreateOrder"
@@ -215,8 +216,15 @@ export function CheckOut() {
 
     const confirmOrder = async () => {
         for (let oi of totalOrderedItems) {
-            await createOrder(yourName, oi, room, isSouthHall)
+            const x = await createOrder(yourName, oi, room, isSouthHall)
+            if (x) {
+                console.log(x)
+            } else {
+                toast.error("Currently not taking orders")
+                return
+            }
         }
+        toast.success("Ordered has been placed, please wait for delivery")
         setTotalOrderedItems([])
     }
 

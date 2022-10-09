@@ -10,6 +10,8 @@ import coffee from "./Images/coffee.jpg"
 import tea_raw from "./Images/tea-raw.jpg"
 import { ItemProps, OrderItem } from "./types"
 
+import { ToastContainer } from "react-toastify"
+
 interface ContextState {
     totalOrderedItems: OrderItem[]
     setTotalOrderedItems(items: OrderItem[]): void
@@ -44,6 +46,7 @@ function App() {
             value={{ totalOrderedItems, setTotalOrderedItems, totalItems }}
         >
             <div>
+                <ToastContainer autoClose={2000} hideProgressBar={true} />
                 <HashRouter>
                     <NavBar />
                     <Routes>

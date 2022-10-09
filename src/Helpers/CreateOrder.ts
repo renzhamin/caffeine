@@ -24,7 +24,7 @@ export async function createOrder(
         cost: calculateCost(oi.item.price, oi.ing),
     }
     const record = await client.records.create("orders", order).catch((err) => {
-        throw Error(err)
+        return null
     })
-    console.log(record)
+    return record
 }

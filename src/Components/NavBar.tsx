@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 
+import logo from "../Images/logo.png"
+
 export function NavBar() {
     const [burgerExpanded, setBurgerExpanded] = useState("")
 
@@ -11,14 +13,13 @@ export function NavBar() {
             aria-label="main navigation"
         >
             <div className="navbar-brand">
-                <a className="navbar-item" href="https://bulma.io">
+                <Link className="navbar-item" to="/">
                     <img
-                        src="https://bulma.io/images/bulma-logo.png"
-                        width="112"
-                        height="28"
+                        // src="https://bulma.io/images/bulma-logo.png"
+                        src={logo}
                         alt="logo"
                     />
-                </a>
+                </Link>
 
                 <a
                     role="button"

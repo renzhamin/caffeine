@@ -151,7 +151,7 @@ export function Item() {
                     </div>
                     <div className="is-size-5 block"> Net Cost : {cost}</div>
                 </div>
-                <div className="card-footer">
+                <div className="card-footer mb-6">
                     <button
                         className="card-footer-item button is-success "
                         type="submit"
