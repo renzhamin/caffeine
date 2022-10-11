@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 
 export function ModalGeneric({
     isActive,
@@ -7,7 +7,7 @@ export function ModalGeneric({
 }: {
     isActive: boolean
     setIsActive(arg0: boolean): void
-    children?: any
+    children?: ReactNode
 }) {
     return (
         <div className={"modal " + (isActive && "is-active")}>

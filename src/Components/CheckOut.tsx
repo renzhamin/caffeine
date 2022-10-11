@@ -9,7 +9,6 @@ import {
     setOrderedItemsInLS,
 } from "../Helpers/LocalStorageMaintainer"
 import { OrderItem } from "../types"
-import { ModalGeneric } from "./ModalGeneric"
 import { ModalYesNo } from "./ModalYesNo"
 
 function DisplayOrderItem(order: OrderItem) {
@@ -49,10 +48,10 @@ function ConfirmOrder({
 }: {
     cost: number
     isSouthHall: boolean
-    setIsSouthHall: any
+    setIsSouthHall(s: boolean): void
     confirmOrder(): void
     room: string
-    setRoom(room: string): any
+    setRoom(room: string): void
     yourName: string
     setYourName(name: string): void
 }) {
@@ -215,7 +214,7 @@ export function CheckOut() {
     }, [room, yourName])
 
     const confirmOrder = async () => {
-        for (let oi of totalOrderedItems) {
+        for (const oi of totalOrderedItems) {
             const x = await createOrder(yourName, oi, room, isSouthHall)
             if (x) {
                 console.log(x)
@@ -243,7 +242,7 @@ export function CheckOut() {
                 />
             </div>
             <div className="columns is-multiline">
-                {totalOrderedItems.map((order, index) => {
+                {totalOrderedItems.map((order) => {
                     return (
                         <div key={order.id} className="column is-4">
                             <div className="card">

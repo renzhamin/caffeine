@@ -13,7 +13,7 @@ export function ButtonsArray({
     value: number
     setValue(n: number): void
 }) {
-    let arr: number[] = []
+    const arr: number[] = []
     for (let i = min; i <= max; i++) {
         arr.push(i)
     }

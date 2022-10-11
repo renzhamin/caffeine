@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import { ModalGeneric } from "./ModalGeneric"
 
 export function ModalYesNo({
@@ -16,7 +16,7 @@ export function ModalYesNo({
     onNo(): void
     yesIsGood: boolean
     text: string
-    children?: any
+    children?: ReactNode
 }) {
     return (
         <ModalGeneric isActive={isActive} setIsActive={setIsActive}>
@@ -40,6 +40,7 @@ export function ModalYesNo({
                     No
                 </button>
             </div>
+            {children}
         </ModalGeneric>
     )
 }

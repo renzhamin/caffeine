@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Ingredients, ItemProps } from "../types"
-import { AppContext } from "../App"
-import { ingredientPrices, calculateCost } from "../Helpers/CostCalculations"
 import { useParams } from "react-router"
-import { ButtonsArray } from "./ButtonsArray"
 import { Link } from "react-router-dom"
-import { ModalGeneric } from "./ModalGeneric"
+import { AppContext } from "../App"
+import { calculateCost, ingredientPrices } from "../Helpers/CostCalculations"
 import { setOrderedItemsInLS } from "../Helpers/LocalStorageMaintainer"
+import { Ingredients } from "../types"
+import { ButtonsArray } from "./ButtonsArray"
+import { ModalGeneric } from "./ModalGeneric"
 
 const defaultIng: Ingredients = {
     doubleShot: false,
@@ -23,9 +23,9 @@ function generateUUID() {
 }
 
 export function Item() {
-    let { totalOrderedItems, setTotalOrderedItems, totalItems } =
+    const { totalOrderedItems, setTotalOrderedItems, totalItems } =
         useContext(AppContext)
-    let { id } = useParams()
+    const { id } = useParams()
 
     const props = totalItems.filter((item) => item.id == id)[0]
 
@@ -34,12 +34,6 @@ export function Item() {
     const [cost, setCost] = useState(price + ingredientPrices.sugar)
 
     const [isModalActive, setIsModalActive] = useState(false)
-
-    const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
-        const name = e.currentTarget.name
-        const value = parseInt(e.currentTarget.value)
-        setIng({ ...ing, [name]: value })
-    }
 
     const setIngValue = (name: string) => {
         return (value: number) => {

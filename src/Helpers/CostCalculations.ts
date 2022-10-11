@@ -23,7 +23,7 @@ export function getTotalCost(
     if (totalOrderedItems.length === 0) return 0
 
     let totalCost = 0
-    for (let order of totalOrderedItems) {
+    for (const order of totalOrderedItems) {
         totalCost += calculateCost(order.item.price, order.ing)
     }
 

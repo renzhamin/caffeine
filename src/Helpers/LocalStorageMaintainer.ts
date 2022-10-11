@@ -9,7 +9,7 @@ export function getOrderedItemsFromLS() {
 
     if (!prevOrderedItems) return null
 
-    let totalOrderedItems: OrderItem[] = []
+    const totalOrderedItems: OrderItem[] = []
 
     Object.assign(totalOrderedItems, prevOrderedItems)
 
@@ -25,7 +25,7 @@ export function setOrderedItemsInLS(OI: OrderItem[]) {
 }
 
 export function getIsSouthHallFromLS() {
-    let isSouthhall = localStorage.getItem("isSouthhall")
+    const isSouthhall = localStorage.getItem("isSouthhall")
 
     if (isSouthhall === "1") return true
 
@@ -33,7 +33,7 @@ export function getIsSouthHallFromLS() {
 }
 
 export function setIsSouthHallInLS(value: boolean) {
-    let x = value ? "1" : "0"
+    const x = value ? "1" : "0"
 
     localStorage.setItem("isSouthhall", x)
 }

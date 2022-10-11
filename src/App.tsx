@@ -42,21 +42,23 @@ function App() {
     const totalItems: ItemProps[] = [TeaObj, CoffeObj]
 
     return (
-        <AppContext.Provider
-            value={{ totalOrderedItems, setTotalOrderedItems, totalItems }}
-        >
-            <div>
-                <ToastContainer autoClose={2000} hideProgressBar={true} />
-                <HashRouter>
-                    <NavBar />
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/item/:id" element={<Item />} />
-                        <Route path="/checkout" element={<CheckOut />} />
-                    </Routes>
-                </HashRouter>
-            </div>
-        </AppContext.Provider>
+        <React.StrictMode>
+            <AppContext.Provider
+                value={{ totalOrderedItems, setTotalOrderedItems, totalItems }}
+            >
+                <div>
+                    <ToastContainer autoClose={2000} hideProgressBar={true} />
+                    <HashRouter>
+                        <NavBar />
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/item/:id" element={<Item />} />
+                            <Route path="/checkout" element={<CheckOut />} />
+                        </Routes>
+                    </HashRouter>
+                </div>
+            </AppContext.Provider>
+        </React.StrictMode>
     )
 }
 
